@@ -108,9 +108,19 @@ counter.incrementBy(2, numberOfTimes: 7)
 
 ```
 
+* 使用protocol来声明一个接口。类、枚举和结构体都可以实现接口。
+
+* 在类型名后面使用where来指定一个需求列表——例如，要限定实现一个协议的类型，需要限定两个类型
+要相同，或者限定一个类必须有一个特定的父类。
 
 
-    
+```
+    func anyCommonElements <T, U where T: Sequence, U: Sequence, T.GeneratorType.Element:Equatable, T.GeneratorType.Element == U.GeneratorType.Element> (lhs: T, rhs: U) -> Bool {
+    ……
+    }
+```
+
+
     
 
 

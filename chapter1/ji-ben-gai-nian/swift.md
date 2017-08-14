@@ -51,10 +51,26 @@ shoppingList = [] // 去逛街并买点东西
 
 ```
 
+* 使用extension来为现有的类型添加功能，比如添加一个计算属性的方法。你可以使用扩展来给任意类型
+添加协议，甚至是你从外部库或者框架中导入的类型。
 
+* 三个双引号的使用：
+  
+  
+  ```
+  let quotation = """
+  Even though there's whitespace to the left,
+  the actual lines aren't indented.
+  Except for this line.
+  Double quotes (") can appear without being escaped.
+ 
+  I still have \(apples + oranges) pieces of fruit.
+  """
 
-
-
+  ```
+  
+  
+  
 
 
 
