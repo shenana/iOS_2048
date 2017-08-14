@@ -7,5 +7,6 @@
     * [iOS应用剖析\(目录结构\)](chapter1/ji-ben-gai-nian/iosying-yong-pou-xi.md)
     * [swift](chapter1/ji-ben-gai-nian/swift.md)
       * [可选类型](chapter1/ji-ben-gai-nian/swift/ke-xuan-lei-xing.md)
+      * [函数](chapter1/ji-ben-gai-nian/swift/han-shu.md)
   * [demo](chapter1/demo.md)
 
