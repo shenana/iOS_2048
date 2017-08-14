@@ -38,3 +38,17 @@ let emptyDictionary = Dictionary<String, Float>()
 shoppingList = [] // 去逛街并买点东西
 ```
 * 在if语句中，条件必须是一个布尔表达式
+
+* 可以在循环中使用`..<`来表示范围，但是创建的范围不包含上界，如果想包含的话需要使用`...`。
+
+
+```
+    var firstForLoop = 0
+    for i in 0..<3 {
+    firstForLoop += i
+    }
+    firstForLoop
+
+```
+
+
