@@ -13,4 +13,5 @@
     * [1.游戏面板](chapter1/demo/you-xi-mian-ban.md)
     * [2.计分板](chapter1/demo/2ji-fen-ban-yu-shu-zi-kuai.md)
     * [3.数字块](chapter1/demo/shu-zi-kuai.md)
+    * [4.游戏区域模型层](chapter1/demo/4you-xi-qu-yu-mo-xing-ceng.md)
 

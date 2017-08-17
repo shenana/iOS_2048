@@ -191,13 +191,68 @@ bord = gamebord
 ```
 
 
-运行程序，此时在主面板上有一个计分板以及一个游戏面板，在游面板
+运行程序，此时在主面板上有一个计分板以及一个游戏面板，在游戏面板可看到两个数值为2的数字块。
+
+###六、随机插入数字块
+每当用户滑动一次屏幕时，都应该在空闲的位置随机抽取一块添加数值为2的数字块。为此，选用一个数组结构来存储已经添加进游戏的数字块，数组中存储当前块的值，通过当前值是否为空来判断这个位置是否空闲。新建一个BaseModle.swift文件，将该文件自动生成的类删除，添加一下代码：
+
+
+```
+//数组中存放的枚举，要么空要么一个带值的Tile
+//存放实际值的数组
+enum TileEnum{
+    case Empty
+    case Tile(Int)
+}
+
+struct SequeceGameBord<T> {
+    var demension:Int
+    //存放实际值的数组
+    var tileArray:[T]
+    
+    init(demension d:Int,initValue:T){
+        self.demension=d
+        tileArray=[T](count: d*d, repeatedValue : initValue)//设置tileArray包含b*b个元素，每个元素初始值为initValue
+    }
+    //subscript就是给结构体定义下标访问方式，通过当前的x,y坐标来计算存储和取出的位置
+    subscript(row:Int,col:Int)->T{
+        get{
+            assert(row>=0&&row<demension&&col>=0&&col<demension)
+            return tileArray[row*demension+col]
+        }
+        set{
+            assert(row>=0&&row<demension&&col>=0&&col<demension)
+            tileArray[row*demension+col]=newValue
+        }
+    }
+    //mutating是结构体在修改自身属性时必须要加的。
+    mutating func setAll(value:T){
+        for i in 0..<demension{
+            for j in 0..<demension{
+                self[i,j]=value
+            }
+        }
+    
+    }
+    
+}
+```
+
+此时可知，存放整个数字块状态的结构体就是一个`SequenceGamebord<TileEnum>`。
 
 
 
 
 
 
+
+##问题：
+1.import Foundation需要吗？
+2. enum TileEnum{
+    case Empty
+    case Tile(Int)
+}
+中的Tile（Int）什么意思？？
 
 
 
