@@ -140,7 +140,7 @@ init(demension d:Int,tileWidth tw:CGFloat,tilePadding tp:CGFloat,backgroundColor
 ```   
 在viewDidLoad()方法中调用该setupGame（），即在 viewDidLoad()方法调用super.viewDidLoad()后再去调用setupGame（）方法。
 ###六、初始化的半透明小方块
-在GamebordView中添加如下方法:
+在GamebordView.swift中添加如下方法:
  
 
 ```
@@ -165,7 +165,7 @@ init(demension d:Int,tileWidth tw:CGFloat,tilePadding tp:CGFloat,backgroundColor
 ```
 
 
-在NumbertailGameController中对gamebord调用该方法，即在setupGame()方法调用view.addSubview(gamebord)之前使用如下语句：
+在NumbertailGameController.swift中对gamebord调用该方法，即在setupGame()方法调用view.addSubview(gamebord)之前使用如下语句：
 
 
 ```

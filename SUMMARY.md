@@ -11,4 +11,5 @@
   * [demo](chapter1/demo.md)
     * [storyboard](chapter1/demo/storyboard.md)
     * [1.游戏面板](chapter1/demo/you-xi-mian-ban.md)
+    * [2.计分板](chapter1/demo/2ji-fen-ban-yu-shu-zi-kuai.md)
 
