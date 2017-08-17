@@ -10,4 +10,5 @@
       * [函数](chapter1/ji-ben-gai-nian/swift/han-shu.md)
   * [demo](chapter1/demo.md)
     * [storyboard](chapter1/demo/storyboard.md)
+    * [1.游戏面板](chapter1/demo/you-xi-mian-ban.md)
 
