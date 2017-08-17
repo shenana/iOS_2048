@@ -92,24 +92,111 @@ init(position:CGPoint,width:CGFloat,value:Int,delegate d:AppearanceProviderProto
 ```
 ###三、将数字块添加到游戏面板中
 首先，在GamebordView.swift中新增如下方法，以确保某个点位置属于游戏面板内的：
-为了将数字块添加到游戏面板中，在GamebordView.swift中新增如下方法
 
 
+```
 func positionIsValied(position : (Int , Int)) -> Bool{
     let (x , y) = position
     return x >= 0 && x < dimension && y >= 0 && y < dimension
 }
-
-
-
+```
 为方便根据数值使得数字块、数值显示各种不同的颜色，先在GamebordView类中添加实例：
-为了将数字块添加到游戏面板中，在GamebordView.swift中新增如下方
  `let provider = AppearanceProvider()`
-为了将数字块添加到游戏面板中，在GamebordView.swift中新增如下方法
+取出数字块相对于游戏区块的坐标，先在GamebordView类中添加实例tiles从而使得tiles能保存数字块的坐标：
+  `var tiles : Dictionary<NSIndexPath , TileView>`
+并在init方法中对其初始化为空字典：
+
+```
+tiles = Dictionary()
+```
+接着，在GamebordView.swift中新增如下方法，在此方法中，将取出数字块相对于游戏区块的坐标放入tiles中，然后初始化出数字块，添加到游戏面板中，且将其置于上层：
+
+```
+func insertTile(position:(Int,Int),value:Int){
+        assert(positionIsValied(position))
+        let(row,col)=position
+        let x=tilePadding+CGFloat(row)*(tilePadding+tileWidth)
+        let y=tilePadding+CGFloat(col)*(tilePadding+tileWidth)
+        let tileView=TileView(position: CGPointMake(x, y), width: tileWidth, value: value, delegate: provider)
+        addSubview(tileView)
+        bringSubviewToFront(tileView)
+        tiles[NSIndexPath(forRow : row , inSection:  col)] = tileView
+        //UITableView声明了一个NSIndexPath的类别，主要用 来标识当前cell的在tableView中的位置，该类别有section和row两个属性，前者标识当前cell处于第几个section中，后者代 表在该section中的第几行。
+}
+```
+
+###四、为数字块添加动画效果
+首先，在GamebordView类中添加如下属性： 
+     
+    
+    ```
+    let tilePopDelay: NSTimeInterval = 0.05
+    let tileExpandTime: NSTimeInterval = 0.18
+    let tilePopMaxScale: CGFloat = 1.1
+    let tileContractTime: NSTimeInterval = 0.08
+      
+    ```
+    
+    
+    
+接着，在上面的insertTile方法的尾部加入以下代码：
+ 
+
+```
+UIView.animateWithDuration(tileExpandTime, delay: tilePopDelay, options: UIViewAnimationOptions.TransitionNone,
+        animations: {            tileView.layer.setAffineTransform(CGAffineTransformMakeScale(self.tilePopMaxScale, self.tilePopMaxScale))
+        },
+        completion: { finished in
+            UIView.animateWithDuration(self.tileContractTime, animations: { () -> Void in
+            tileView.layer.setAffineTransform(CGAffineTransformIdentity)
+        })
+    })
+```
+
+###五、调用数字块
+在主控制器NumbertailGameController中初始化GamebordView的实例，先在NumbertailGameController类中添加属性：
+
+
+```
+var bord : GamebordView?
+```
+
+
+并在NumbertailGameController类的setupGame方法调用view.addSubview(gamebord)后对bord进行赋值：
+
+
+```
+bord = gamebord
+```
+
+##删掉下面
+从而可以通过GamebordView的实例bord来调用GamebordView的insertTile(pos, value: value)方法，为此在NumbertailGameController类中也添加一个insertTile方法:
+
+
+```
+  func insertTile(position:(Int,Int),value:Int){
+        assert(bord != nil)
+        let b=bord!
+        b.insertTile(position, value: value)
+    }
+```
+
+##删掉上面
+在setupGame方法中调用view.addSubview(gamebord)前调用insetTile方法，从而在（1，3）和（3，1）位置上新建小数字块：
+
+
+```
+     gamebord.insertTile((3,1), value: 2)
+     gamebord.insertTile((1,3), value: 2)
+```
+
+
+运行程序，此时在主面板上有一个计分板以及一个游戏面板，在游面板
 
 
 
-UITableView声明了一个NSIndexPath的类别，主要用 来标识当前cell的在tableView中的位置，该类别有section和row两个属性，前者标识当前cell处于第几个section中，后者代 表在该section中的第几行。
+
+
 
 
 
