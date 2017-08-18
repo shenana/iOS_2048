@@ -14,4 +14,6 @@
     * [2.计分板](chapter1/demo/2ji-fen-ban-yu-shu-zi-kuai.md)
     * [3.数字块](chapter1/demo/shu-zi-kuai.md)
     * [4.游戏区域模型层](chapter1/demo/4you-xi-qu-yu-mo-xing-ceng.md)
+      * [4.1 游戏模型协议](chapter1/demo/4you-xi-qu-yu-mo-xing-ceng/41-you-xi-mo-xing-xie-yi.md)
+      * [4.2 游戏模型](chapter1/demo/4you-xi-qu-yu-mo-xing-ceng/42-you-xi-mo-xing.md)
 
